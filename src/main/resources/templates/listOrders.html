@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8"></meta>
+
+<title>Orders</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/interface-style.css" rel="stylesheet">
+<link href="/css/customized/products-style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<label class="label">Ordenes</label>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Pagado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="o: ${listOrders}">
+					<th th:text="${o.id}"></th>
+					<td th:text="${o.paid}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<hr class="featurette-divider">
+	<div th:replace="fragments/footer :: footer"></div>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/sidebars.js"></script>
+</body>
+</html>

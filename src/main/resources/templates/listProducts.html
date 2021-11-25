@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+
+<title>Products</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/interface-style.css" rel="stylesheet">
+<link href="/css/customized/products-style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+	<header th:replace="fragments/header :: header"> </header>
+	<main class="container mt-2">
+
+		<h2>Conoce a nuestros productos</h2>
+
+		<div class="container mt-3">
+			<div class="row">
+				<div class="col g-3" th:each="product : ${listProducts}">
+					<div class="card" style="width: 22rem">
+						<img th:src="${'/img/productos/producto' + product.id + '.jpg'}"
+							class="card-img-top" alt="..." width="60%" height="20">
+						<div class="card-body">
+							<h5 class="card-text"
+								th:text="*{product.name}+' '+'S/'+*{product.price}"></h5>
+
+							<p class="card-text">
+								Descripcion:
+								<spam th:text="*{product.description}"></spam>
+							</p>
+							<p class="card-text">
+								Categoría:
+								<spam th:text="*{product.category.name}"></spam>
+							</p>
+
+							<p class="text-muted text-end">
+								Productor: <span class="text-muted text-end"
+									th:text="*{product.producer.name}"></span>
+							</p>
+
+							<p class="text-muted text-end">
+								Distrito: <span class="text-muted text-end"
+									th:text="*{product.producer.district.name}+', '+*{product.producer.district.department.name}"></span>
+							</p>
+							<a type="button" class="btn btn-warning"
+								th:href="@{/order/addToActualOrder(productId=${product.id})}">Añadir</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<hr class="featurette-divider">
+	<div th:replace="fragments/footer :: footer"></div>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/sidebars.js"></script>
+</body>
+</html>

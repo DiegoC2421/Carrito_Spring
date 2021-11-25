@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<title>Insert title here</title>
+<link th:href="@{/css/customized/erorr.css}" rel="stylesheet">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/main-style.css}" rel="stylesheet">
+<link th:href="@{/css/features.css}" rel="stylesheet">
+<link th:href="@{/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/css/solid.min.css}" rel="stylesheet">
+
+<style type="text/css">
+body {
+	padding-top: 1rem;
+}
+</style>
+
+</head>
+
+
+<body>
+<!-- 	<header th:replace="/layout :: frag-header"> -->
+<!-- 		<!-- <th:block th:include="layout"></th:block> -->
+<!-- 	</header> -->
+	
+	<main>
+		<div class="container d-flex justify-content-center mt-5">
+			<div class="card bg-light p-2 text-center" th:object="${shipmentStatuses}">
+				<div class="mt-4">
+					<img
+						src="https://st3.depositphotos.com/14846838/19058/v/600/depositphotos_190581908-stock-illustration-shipment-denied-vector-icon-of.jpg" />
+				</div>
+				<span class="total"><br>
+					<h2>
+						<strong>Informar error</strong>
+					</h2> </span>
+				<h6 class="mt-4 text-black">Si presenta errores en el envío o
+					en la recepción, favor de enviar una solicitud de reclamo en la
+					parte inferior</h6>
+					<br>
+				<div class="text-center">
+					<a id="ancla" type="button" class="btn btn-success mb-2"
+						th:href="@{/}">Enviar informe</a> <a id="ancla"
+						type="button" class="btn btn-danger mb-2"
+						th:href="@{/mayorista/shipment}">Cancelar</a>
+				</div>
+				
+				
+				 <span class="mr-2 comments" th:text="${shipmentStatuses.dateStart}"></span>
+
+			</div>
+
+		</div>
+
+	</main>
+	<footer>
+
+	</footer>
+		<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/sidebars.js"></script>
+</body>
+</html>

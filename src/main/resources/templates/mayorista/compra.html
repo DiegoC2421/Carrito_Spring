@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+
+<title>Compra</title>
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/interface-style.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+
+<style type="text/css">
+body {
+	padding-top: 4rem;
+}
+</style>
+
+
+</head>
+<body>
+
+	<!-- navbar -->
+	<header th:replace="/layout :: frag-header">
+		<!-- <th:block th:include="layout"></th:block> -->
+	</header>
+
+	<!-- body  -->
+
+	<main class="main-contenedor">
+
+		<div class="container mt-5" th:object="${compra}">
+			<div class="card mb-3" style="max-width: 70rem; height: 25rem;">
+				<div class="row g-0">
+					<div class="col">
+						<img
+							th:src="${'/img/productos/producto' + compra.product + '.jpg'}"
+							class="img-fluid rounded-start" alt="..."
+							style="max-width: 25rem; height: 25rem;">
+					</div>
+					<div class="col">
+						<div class="card-body">
+							<h4 class="card-title" th:text="${compra.name}"></h4>
+							<p class="card-text" th:text="${compra.description}"></p>
+							<p class="card-text">
+								S/.
+								<spam th:text="${compra.price}"></spam>
+								Kg
+							</p>
+							<h5 class="card-text">Información Adicional</h5>
+							<ul>
+								<li>Productor: <spam
+										th:text="${compra.producer.name+' '+compra.producer.lastName}"></spam></li>
+								<li>Categoria: <spam th:text="${compra.category.name}"></spam></li>
+
+
+							</ul>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card-body">
+							<form th:action="@{/mayorista/calculoPrecio}" method="post">
+								<h5 class="card-title">Cantidad</h5>
+								<div class="input-group mt-3 my-3">
+									<input type="number" placeholder="1" name="cantidadProduct"
+										style="width: 10rem;" min="1" max="999">
+									<!-- <input type="submit" class="btn btn-primary ms-2" value="Recalcular"
+										style="width: 7rem;"> -->
+								</div>
+								<h5 class="card-title">Total</h5>
+								<div class="input-group mt-3">
+									<span class="input-group-text">S/.</span> <input type="text"
+										style="width: 10rem;" th:field="${compra.price}" disabled>
+									<!-- <span
+									class="input-group-text">.00</span>  -->
+								</div>
+							</form>
+
+							<div class="d-grid gap-2 mt-5">
+								<button class="btn btn-secondary" type="button"
+									data-bs-toggle="modal" data-bs-target="#modalPayment">Metodo
+									de Pago</button>
+								<button class="btn btn-secondary" data-bs-toggle="modal"
+									data-bs-target="#modalShipment" type="button">Metodo
+									de Envio</button>
+							</div>
+							<div class="d-grid position-absolute bottom-0 end-0 me-3">
+								<a class="btn btn-secondary" style="width: 20.3rem"
+									type="button"
+									th:href="@{/mayorista/{id}/detail(id=${compra.product})}">Confirmar
+									Compra</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+	<!-- ********************** MODAL TYPES***************************************** -->
+
+
+	<!-- Modal Shipment -->
+	<div class="modal fade" id="modalShipment" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Escoge tu
+						método de envío</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<div class="container">
+						<div class="row g-2">
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/Encomienda.png" class="card-img-top"
+										alt="Envio por encomienda" style="height: 10rem">
+									<div class="card-body">
+										<h5 class="card-title">Envio mediante encomienda</h5>
+										<p class="card-text">Con la encomienda tu pedido llegara a
+											cualquier ciudad del Perú.</p>
+										<a href="#" class="btn btn-primary">Selccionar</a>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/Enviogrande.jpg" class="card-img-top"
+										alt="Envio privado" style="height: 10rem">
+									<div class="card-body">
+										<h5 class="card-title">Envio privado</h5>
+										<p class="card-text">Realiza tu envio de la manera que
+											desees por tu cuenta seleccionando este tipo de envio.</p>
+										<a href="#" class="btn btn-primary">Seleccionar</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Confirmar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Payment-->
+	<div class="modal fade" id="modalPayment" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Escoge tu
+						método de pago</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+
+					<div class="container">
+						<div class="row g-3">
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/tarjetacredito.png" class="card-img-top"
+										alt="Pago con Tarjeta" style="height: 12.5rem">
+									<div class="card-body">
+										<h5 class="card-title">Paga con tarjeta de crédito</h5>
+										<p class="card-text">Este método de pago es aceptado con
+											visa y mastercard.</p>
+										<a href="#" class="btn btn-primary">Selccionar</a>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/yapelogo.png" class="card-img-top"
+										alt="London">
+									<div class="card-body">
+										<h5 class="card-title">Paga con Yape</h5>
+										<p class="card-text">Con Yape podras pagar al instante
+											desde tu dispositivo móvil.</p>
+										<a href="#" class="btn btn-primary">Seleccionar</a>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/Monedaperu.png" class="card-img-top"
+										alt="Dinero en efectivo">
+									<div class="card-body">
+										<h5 class="card-title">Paga en efectivo</h5>
+										<p class="card-text">Puedes pagar si lo deseas en efectivo
+											seleccionando este método.</p>
+										<a href="#" class="btn btn-primary">Seleccionar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Confirmar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
+
+	<script src="/js/sidebars.js"></script>
+</body>
+</html>

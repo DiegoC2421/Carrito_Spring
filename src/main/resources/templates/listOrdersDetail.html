@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8"></meta>
+
+<title>Products</title>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/interface-style.css" rel="stylesheet">
+<link href="/css/fontawesome.min.css" rel="stylesheet">
+<link href="/css/customized/products-style.css" rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+<hr class="featurette-divider">
+<hr class="featurette-divider">
+<hr class="featurette-divider">
+<hr class="featurette-divider">
+
+	<main class="main-contenedor">
+		<div class="container mt-4">
+			<h3>Carrito</h3>
+			<div class="row">
+				<div class="col-sm-8">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Producto</th>
+								<th>Precio</th>
+								<th>Cantidady</th>
+								<th>Subtotal</th>
+								<th>Remover</th>
+								<th>Añadir</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="od: ${listOrdersDetail}">
+								<th th:text="${od.id}"></th>
+								<td th:text="${od.product.name}"></td>
+								<td th:text="'S/.'+' '+${od.product.price}"></td>
+								<td th:text="${od.quantity}"></td>
+								<td th:text="${od.subtotal()}"></td>
+								<td><a th:href="@{/order/remove1(odId=${od.id})}">-</a></td>
+								<td><a th:href="@{/order/add1(odId=${od.id})}">+</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<div class="card-header">
+							<h3>Generar Compra</h3>
+						</div>
+						<div class="card-body">
+							<div class="d-grid gap-2 mt-5">
+								<button class="btn btn-secondary" type="button"
+									data-bs-toggle="modal" data-bs-target="#modalPayment">Metodo
+									de Pago</button>
+								<button class="btn btn-secondary" data-bs-toggle="modal"
+									data-bs-target="#modalShipment" type="button">Metodo
+									de Envio</button>
+
+							</div>
+							<!-- 						<select th:field="*{Tipo de Pago}"> -->
+							<!-- 							<option th:value="'M'" th:text="Male"></option> -->
+							<!-- 							<option th:value="'F'" th:text="Female"></option> -->
+							<!-- 						<select th:field="*{Tipo de envío}"> -->
+							<!-- 							<option th:value="'M'" th:text="Male"></option> -->
+							<!-- 							<option th:value="'F'" th:text="Female"></option> -->
+
+
+							</select> <label>Total: </label> <input type="text" readonly=""
+								class="form-control">
+							<div class="card-footer">
+
+								<a th:href="@{/product/listProducts}"
+									class="btn btn-info btn-block">Volver</a> <a></a> <a
+									th:href="@{/order/pay}" class="btn btn-danger btn-block">Continuar
+									compra</a>
+							</div>
+
+							<!-- 					<select class="form-control" th:field="*{Type_payments.id}"> -->
+							<!-- 						<option th:each="d: ${listaDuenos}" th:value="${d.idDueno}" -->
+							<!-- 							th:text="${d.nameDueno}" -->
+							<!-- 							th:selected="(${d.idDueno} == *{dueno.idDueno})"></option> -->
+							<!-- 					</select> -->
+						</div>
+					</div>
+				</div>
+			</div>
+	</main>
+
+	<!-- ********************** MODAL TYPES***************************************** -->
+
+
+	<!-- Modal Shipment -->
+
+	<div class="modal fade" id="modalShipment" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Escoge tu
+						método de envío</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<div class="container">
+						<div class="row g-2">
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/Encomienda.png" class="card-img-top"
+										alt="Envio por encomienda" style="height: 10rem">
+									<div class="card-body">
+										<h5 class="card-title">Envio mediante encomienda</h5>
+										<p class="card-text">Con la encomienda tu pedido llegara a
+											cualquier ciudad del Perú.</p>
+										<a href="#" class="btn btn-primary">Selccionar</a>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/Enviogrande.jpg" class="card-img-top"
+										alt="Envio privado" style="height: 10rem">
+									<div class="card-body">
+										<h5 class="card-title">Envio privado</h5>
+										<p class="card-text">Realiza tu envio de la manera que
+											desees por tu cuenta seleccionando este tipo de envio.</p>
+										<a href="#" class="btn btn-primary">Seleccionar</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Confirmar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Payment-->
+	<div class="modal fade" id="modalPayment" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Escoge tu
+						método de pago</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+
+					<div class="container">
+						<div class="row g-3">
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/tarjetacredito.png" class="card-img-top"
+										alt="Pago con Tarjeta" style="height: 12.5rem">
+									<div class="card-body">
+										<h5 class="card-title">Paga con tarjeta de crédito</h5>
+										<p class="card-text">Este método de pago es aceptado con
+											visa y mastercard.</p>
+										<a href="#" class="btn btn-primary">Selccionar</a>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/yapelogo.png" class="card-img-top"
+										alt="London">
+									<div class="card-body">
+										<h5 class="card-title">Paga con Yape</h5>
+										<p class="card-text">Con Yape podras pagar al instante
+											desde tu dispositivo móvil.</p>
+										<a href="#" class="btn btn-primary">Seleccionar</a>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card">
+									<img src="/img/compra/Monedaperu.png" class="card-img-top"
+										alt="Dinero en efectivo">
+									<div class="card-body">
+										<h5 class="card-title">Paga en efectivo</h5>
+										<p class="card-text">Puedes pagar si lo deseas en efectivo
+											seleccionando este método.</p>
+										<a href="#" class="btn btn-primary">Seleccionar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Confirmar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/sidebars.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- 	<div th:replace="fragments/footer :: footer"></div> -->
+</body>
+</html>

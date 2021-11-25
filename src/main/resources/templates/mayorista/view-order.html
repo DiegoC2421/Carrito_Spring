@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+
+<title>Demo dashboard</title>
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/customized/prueba.css" rel="stylesheet">
+<link th:href="@{/css/fontawesome.min.css}" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	rel="stylesheet">
+
+<style type="text/css">
+body {
+	padding-top: 4rem;
+}
+</style>
+
+
+
+</head>
+
+<body>
+
+	<!-- navbar -->
+	<header th:replace="/layout :: frag-header">
+		<!-- <th:block th:include="layout"></th:block> -->
+	</header>
+
+	<main>
+
+
+		<div class="container" th:object="${detail}">
+			<div class="bg-green"></div>
+			<div class="row">
+				<div class="col-12 border-bottom px-4 py-3">
+					<div class="row p-0">
+						<div class=" col-md-2 d-flex justify-content-center">
+							<img class="pic mb-md-0 mb-3"
+								src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+								alt="">
+						</div>
+						<div class="col-md-10 ">
+							<div class="d-flex justify-content-between">
+								<p class="textmuted">Cliente:</p>
+								<p class="bg" th:text="${detail.order.date}"></p>
+							</div>
+							<p class="h-blue" th:text="${detail.order.wholesaler.name}"></p>
+							<p class="card-text" th:text="${detail.product.name}"></p>
+							<p class="card-text">
+								Cantidad: <span th:text="${detail.quantity}"></span>
+							</p>
+							<strong>S/. </strong><span th:text="${detail.order.amount}"></span><br>
+							<div
+								class="box d-flex justify-content-between align-items-center mt-3">
+								<p class="">
+									<button class="fas fa-star"></button>
+									<button class="fas fa-plus"></button>
+									<button class="fas fa-tag"></button>
+									<a type="button" class="btn btn-primary" th:href="@{/}"
+									>Nueva Compra</a>
+								</p>
+								<div class="d-flex align-items-center">
+									<p class="textmuted">Estado: 0%</p>
+									<div class="progress-bar">
+										<div data-size="20" class="progress"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 py-2 px-9">
+					<div class="row">
+						<div class="col-12">
+							<div class="collapse multi-collapse" id="multiCollapseExample1">
+								<div class="border-bottom py-2">
+									<div class="d-flex justify-content-between align-items-center">
+										<div>
+											<strong>Tipo de envío: </strong>
+											<p class="p-blue"
+												th:text="${detail.order.shipment.typeShipment.name}"></p>
+											<!-- 											<p class="textmuted">~15 mins</p> -->
+										</div>
+										<div class="arrow">
+											<div class="btn btn-primary fas fa-arrow-right"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="collapse multi-collapse" id="multiCollapseExample1">
+								<div class="border-bottom py-2">
+									<div class="d-flex justify-content-between align-items-center">
+										<div>
+											<strong>Tipo de pago: </strong>
+											<h3 class="p-blue" th:text="${detail.order.typePayment.name}"></h3>
+											<!-- 											<p class="textmuted">~15 mins</p> -->
+										</div>
+										<div class="arrow">
+											<div class=" btn btn-primary fas fa-arrow-right"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="collapse multi-collapse" id="multiCollapseExample1">
+								<div class="border-bottom py-2">
+									<div class="d-flex justify-content-between align-items-center">
+										<div>
+											<strong>Dirección: </strong>
+											<h3 class="p-blue" th:text="${detail.order.shipment.address}"></h3>
+											<!-- 											<p class="textmuted">~15 mins</p> -->
+										</div>
+										<div class="arrow">
+											<div class=" btn btn-primary fas fa-arrow-right"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p class="hide">
+						<button class="btn btn-primary px-1" type="button"
+							data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+							aria-expanded="false"
+							aria-controls="multiCollapseExample1 multiCollapseExample2">
+							<p class="p-blue">
+								<span class="fas fa-chevron-up pe-2">Ver opciones
+									guardadas</span>
+
+							</p>
+
+						</button>
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+	<footer> </footer>
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/sidebars.js"></script>
+</body>
+
+</html>

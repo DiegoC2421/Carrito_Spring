@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Start</title>
+
+
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+
+
+<!-- Custom styles for this template -->
+<link href="/css/carousel.css" rel="stylesheet">
+
+<style type="text/css">
+.card img {
+	margin-top: 10px;
+	height: 10rem;
+}
+
+.card {
+	margin: auto;
+}
+
+.card-cuerpo h5 {
+	margin-top: 10px;
+}
+
+.boton-contenedor-primero button {
+	background: #000;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	margin-top: 9rem;
+}
+
+.boton-contenedor button {
+	background: #000;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	margin-top: 9rem;
+}
+</style>
+
+
+</head>
+<body>
+	<!-- navbar -->
+	<header th:replace="/layout :: frag-header">
+		<!-- <th:block th:include="layout"></th:block> -->
+	</header>
+
+	<!-- body  -->
+
+	<main>
+		<div class="presentation">
+			<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#myCarousel"
+						data-bs-slide-to="0" class="active" aria-current="true"
+						aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#myCarousel"
+						data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#myCarousel"
+						data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<svg class="bd-placeholder-img" width="100%" height="100%"
+							xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+							preserveAspectRatio="xMidYMid slice" focusable="false">
+							<img class="portada-one" src="/img/dashboard/portada.png">
+							</svg>
+
+						<div class="container">
+							<div class="carousel-caption text-start">
+								<h1>Mayorista Frutas</h1>
+								<p>Encuentra una gran variedad de frutas que ofrecen los
+									diferentes productores del pais</p>
+								<p>
+									<a class="btn btn-lg btn-primary" href="#">Ver Productos</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<svg class="bd-placeholder-img" width="100%" height="100%"
+							xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+							preserveAspectRatio="xMidYMid slice" focusable="false">
+							<img class="portada-one" src="/img/dashboard/establo.jpg">
+							</svg>
+
+						<div class="container">
+							<div class="carousel-caption">
+								<h1>Mayorista Ganadero</h1>
+								<p>Encuentra los productos mas frescos y seguros en carnes,
+									embutidos, etc.</p>
+								<p>
+									<a class="btn btn-lg btn-primary" href="#">Ver Productos</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<svg class="bd-placeholder-img" width="100%" height="100%"
+							xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+							preserveAspectRatio="xMidYMid slice" focusable="false">
+							<img class="portada-one" src="/img/dashboard/papa.jpg">
+							</svg>
+
+						<div class="container">
+							<div class="carousel-caption text-end">
+								<h1>Mayorista Tuberculos</h1>
+								<p>Explora una gran variedad de verduras y tuberculos al
+									mejor precio</p>
+								<p>
+									<a class="btn btn-lg btn-primary" href="#">Ver Productos</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Alternar pantallas de fondo-->
+
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#myCarousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#myCarousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<!-- ----------------  body  ------------->
+
+
+		<div class="container marketing">
+
+			<!-- ----------------  Carousel Producer  ------------->
+			<hr class="featurette-divider">
+
+			<h1 class="text-center">Productores</h1>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div id="carouselExampleControls" class="carousel slide"
+							data-bs-ride="carousel"
+							style="height: 20rem; ">
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<div class="row">
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productores/agro1.png'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Juan Perez Morales</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													papa</h6>
+
+												<p class="text-muted text-end">Huancavelica - Churcampa</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productores/agro2.png'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Junior Castillo Zapata</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													verduras</h6>
+
+												<p class="text-muted text-end">Lima - La Molina</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productores/agro3.png'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">David Gomez Ramirez</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Ganadero</h6>
+
+												<p class="text-muted text-end">Cusco - Acomayo</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="carousel-item">
+									<div class="row">
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productores/agro4.png'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Fabricio Villalta Asencios</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													verduras</h6>
+
+												<p class="text-muted text-end">Arequipa - Castilla</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productores/agro5.png'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Cristian Delgado Uribe</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													frutas</h6>
+
+												<p class="text-muted text-end">Lima - La Molina</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productores/agro6.png'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Axel Gonzales del Rio</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Ganadero</h6>
+
+												<p class="text-muted text-end">Huancavelica - Churcampa</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="boton-contenedor-primero">
+
+									<button class="carousel-control-prev" type="button"
+										data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Previous</span>
+									</button>
+									<button class="carousel-control-next" type="button"
+										data-bs-target="#carouselExampleControls" data-bs-slide="next">
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Next</span>
+									</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!--				<div class="row">
+					<div class="col-xs-6 col-sm-4 col-md-3 mb-3"
+						th:each="producer : ${producers}">
+						<div class="card">
+							<img th:src="${'/img/producer' + producer.id + '.png'}"
+								class="card-img-top" alt="employee">
+							<div class="card-body">
+								<strong>Name: </strong><span th:text="${producer.id}"></span><br>
+								<h5 class="card-title"
+									th:text="${producer.name + ' ' + producer.lastName }">Special
+									title treatment</h5>
+								<p class=F"card-text">
+									<strong>Name: </strong><span
+										th:text="${producer.district.name}"></span><br> <strong>Department:
+									</strong><span th:text="${producer.district.department.name}"></span><br>
+									
+								</p>
+								<a th:href="${'/producer/view/' + producer.id}"
+									class="btn btn-warning">Comprar</a> <a
+									th:href="${'/producer/view/' + producer.id}"
+									class="btn btn-warning">Ver reseñas</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+ 				-->
+
+			<hr class="featurette-divider">
+
+			<h1 class="text-center">Productos</h1>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div id="carouselControls" class="carousel slide"
+							data-bs-ride="carousel"
+							style="height: 20rem; ">
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<div class="row">
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productos/producto1.jpg'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Papa Amarilla</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													papa</h6>
+
+												<p class="text-muted text-end">S/. 2.00 Kg</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productos/producto2.jpg'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Pepino</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													verduras</h6>
+
+												<p class="text-muted text-end">S/. 4.00 Kg</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productos/producto3.jpg'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Costillar de res</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Ganadero</h6>
+
+												<p class="text-muted text-end">S/. 41.00 Kg</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="carousel-item">
+									<div class="row">
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productos/producto4.jpg'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Zapallo</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													verduras</h6>
+
+												<p class="text-muted text-end">S/. 5.00 Kg</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productos/producto5.jpg'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Lechuga Morada</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Productor de
+													frutas</h6>
+
+												<p class="text-muted text-end">S/. 3.00 Kg</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="card" style="width: 18rem;">
+											<img th:src="${'/img/productos/producto6.jpg'}"
+												class="card-img-top" alt="">
+											<div class="card-cuerpo">
+												<h5 class="card-title">Papa negra</h5>
+												<h6 class="card-subtitle mb-2 text-muted">Ganadero</h6>
+
+												<p class="text-muted text-end">S/. 3.00 Kg</p>
+												<div class="container m-auto">
+													<a href="" class="btn btn-warning">Comprar</a> <a href=""
+														class="btn btn-warning ms-2">Ver reseñas</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="boton-contenedor">
+									<button class="carousel-control-prev" type="button"
+										data-bs-target="#carouselControls" data-bs-slide="prev">
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Previous</span>
+									</button>
+									<button class="carousel-control-next" type="button"
+										data-bs-target="#carouselControls" data-bs-slide="next">
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Next</span>
+									</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- 
+				<div class="row">
+					<div class="col-xs-6 col-sm-4 col-md-3 mb-3"
+						th:each="product : ${products}">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title" th:text="${product.name}">Special
+									title treatment</h5>
+								<p class=F"card-text">
+									<strong>Name: </strong><span th:text="${product.category.name}"></span><br>
+									<strong>Price: S/. </strong><span th:text="${product.price}"></span><br>
+									<strong>Description: </strong><span
+										th:text="${product.description}"></span><br>
+								</p>
+								<a class="btn btn-warning">Ver reseñas</a>
+								<a class="btn btn-warning">Ver productos</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				 -->
+			<hr class="featurette-divider">
+
+
+			<div class="row featurette">
+				<div class="col-md-7">
+					<h3 class="featurette-heading">WEB HUNTERS</h3>
+					<h5 class="text-muted">Por un mejor futuro</h5>
+					<hr>
+					<p class="lead">Somos una startup fundada a mediados del año
+						2021, el cual poseee como finalidad apoyar e incentivar la
+						economía peruana. La manera en la que vamos a realiazar esto es
+						mediante la diversificación y comercialización de los productos
+						que posean los productores del Perú, ofreciendo el mismo a todos
+						los comerciantes interesados.</p>
+
+					<a type="button" class="btn btn-warning mb-2" th:href="@{/team}">Más
+						información</a>
+				</div>
+				<div class="col-md-5">
+					<img class="portada-one" src="/img/tienda1.png">
+				</div>
+
+			</div>
+
+			<hr class="featurette-divider">
+
+			<!-- BENEFITS SECTION -->
+
+			<div class="py-5 text-center text-info background-info">
+				<div class="container">
+					<div class="row">
+						<div class="mx-auto col-md-12">
+							<h1 class="mb-3" contenteditable="true">Beneficios</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-6 p-4">
+							<img class="img-fluid d-block mb-3 mx-auto rounded-circle"
+								alt="Card image cap" width="200"
+								src="https://images.vexels.com/media/users/3/136534/isolated/preview/c93f32e11dbf6b5fe3efc5be5554ec50-icono-de-circulo-de-candado.png">
+							<h4>
+								<b>Seguridad</b>
+							</h4>
+							<p class="mb-1">Garantizamos la máxima seguridad para
+								proteger tu información</p>
+						</div>
+						<div class="col-lg-4 col-md-6 p-4">
+							<img class="img-fluid d-block mb-3 mx-auto rounded-circle"
+								src="https://static.vecteezy.com/system/resources/previews/002/458/755/non_2x/24-hours-available-icon-vector.jpg"
+								alt="Card image cap" width="200">
+							<h4>
+								<b>Disponibilidad</b>
+							</h4>
+							<p class="mb-1">Resolveremos dudas en cualquier momento</p>
+						</div>
+						<div class="col-lg-4 p-4">
+							<img class="img-fluid d-block mb-3 mx-auto rounded-circle"
+								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzZrw9qnmrEBPPITGgA5nOSAHfijPNOnDLEg&usqp=CAU"
+								width="200">
+							<h4>
+								<b>Productividad</b>
+							</h4>
+							<p class="mb-0">Mejoraremos tu situación económica</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<hr class="featurette-divider">
+
+			<!-- MAP SECTION -->
+			<h1 class="text-center">Nuestra sede</h1>
+
+			<iframe id="inlineFrameExample" title="Inline Frame Example"
+				width="100%" height="600"
+				src="https://maps.google.com/maps?q=UPC&t=&z=13&ie=UTF8&iwloc=&output=embed">
+			</iframe>
+
+
+			<hr class="featurette-divider">
+
+
+
+		</div>
+
+	</main>
+	<!-- /END THE FEATURETTES -->
+
+
+	<footer th:replace="/layout :: frag-footer"> </footer>
+
+
+
+
+	<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>

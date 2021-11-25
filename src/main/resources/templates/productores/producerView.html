@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+
+<title>Producer View</title>
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+
+<style type="text/css">
+body {
+	padding-top: 4rem;
+}
+</style>
+
+
+</head>
+<body>
+
+	<!-- navbar -->
+	<header th:replace="/layout :: frag-header">
+		<!-- <th:block th:include="layout"></th:block> -->
+	</header>
+
+	<!-- body  -->
+
+
+	<main class="container mt-2">
+
+		<h2>Conoce a nuestros productores</h2>
+
+		<div class="container mt-3">
+			<div class="row">
+				<div class="col g-3" th:each="producer : ${producers}">
+					<div class="card" style="width: 22rem">
+						<img th:src="${'/img/productores/agro' + producer.id + '.png'}"
+							class="card-img-top" alt="..." width="100%" height="225">
+						<div class="card-body">
+							<h5 class="card-text"
+								th:text="*{producer.name+' '+producer.lastName}"></h5>
+							<p class="card-text" th:text="*{producer.phone}"></p>
+							<p class="card-text" th:text="*{producer.email}"></p>
+
+							<p class="text-muted text-end"
+								th:text="*{producer.district.name}"></p>
+							<a type="button" class="btn btn-primary"
+								th:href="@{/productores/{id}/viewReview(id=${producer.id})}">Reseñas</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</main>
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
+
+	<script src="/js/sidebars.js"></script>
+</body>
+</html>
